@@ -43,7 +43,18 @@ android {
     }
 
 }
-
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.naresh-vgroupinc'
+                artifactId = 'mytestdemo'
+                version = "1.0"
+            }
+        }
+    }
+}
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -54,18 +65,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.github.naresh-vgroupinc'
-            artifactId = 'mytestdemo'
-            version = "1.0"
-            pom {
-                description = 'release'
-            }
-        }
-    }
-    repositories {
-        mavenLocal()
-    }
-}
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            groupId = 'com.github.naresh-vgroupinc'
+//            artifactId = 'mytestdemo'
+//            version = "1.0"
+//            pom {
+//                description = 'release'
+//            }
+//        }
+//    }
+//    repositories {
+//        mavenLocal()
+//    }
+//}
